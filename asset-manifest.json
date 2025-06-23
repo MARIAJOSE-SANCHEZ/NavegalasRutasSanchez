@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/MARIAJOSE-SANCHEZ/NavegalasRutasSanchez/static/css/main.b14eea2f.css",
+    "main.js": "/MARIAJOSE-SANCHEZ/NavegalasRutasSanchez/static/js/main.94d015a5.js",
+    "index.html": "/MARIAJOSE-SANCHEZ/NavegalasRutasSanchez/index.html",
+    "main.b14eea2f.css.map": "/MARIAJOSE-SANCHEZ/NavegalasRutasSanchez/static/css/main.b14eea2f.css.map",
+    "main.94d015a5.js.map": "/MARIAJOSE-SANCHEZ/NavegalasRutasSanchez/static/js/main.94d015a5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b14eea2f.css",
+    "static/js/main.94d015a5.js"
+  ]
+}
