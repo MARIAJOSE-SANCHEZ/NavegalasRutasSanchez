@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Item from "./Item"; 
 
 export default function ItemList({ items }) {
   return (
@@ -8,14 +8,12 @@ export default function ItemList({ items }) {
         <p>No hay productos para mostrar</p>
       ) : (
         items.map(item => (
-          <div key={item.id} className="product-card">
-            <h3>
-              <Link to={`/item/${item.id}`} className="product-link">
-                {item.name}
-              </Link>
-            </h3>
-            <p>Precio: ${item.price}</p>
-          </div>
+          <Item
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            price={item.price}
+          />
         ))
       )}
     </div>

@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import "../App.css"; // si vas a separar los estilos luego
+import "../components/ItemDetail.css"; // 👈 Actualizá si es necesario
 
 export default function ItemDetail({ product }) {
   const [count, setCount] = useState(1);
@@ -10,7 +9,7 @@ export default function ItemDetail({ product }) {
 
   return (
     <div className="item-detail-container">
-            <div className="item-detail-info">
+      <div className="item-detail-info">
         <h2>{product.name}</h2>
         <p className="item-category">Categoría: {product.category}</p>
         <p className="item-price">Precio: ${product.price}</p>
