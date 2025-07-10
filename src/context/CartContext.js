@@ -1,13 +1,10 @@
 import React, { createContext, useState } from "react";
 
-// Creamos el contexto
 export const CartContext = createContext();
 
-// Proveedor del contexto
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Agregar producto al carrito
   const addToCart = (product, quantity) => {
     const itemInCart = cart.find((item) => item.id === product.id);
 
@@ -23,12 +20,10 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // Eliminar producto
   const removeFromCart = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
 
-  // Vaciar carrito
   const clearCart = () => setCart([]);
 
   return (
