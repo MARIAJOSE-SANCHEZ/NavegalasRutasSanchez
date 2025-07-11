@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchProductById } from "../data";
+import { doc, getDoc } from "firebase/firestore";
+import db from "../firebase"; 
 import ItemDetail from "../components/ItemDetail";
 
 export default function ItemDetailContainer() {
@@ -13,19 +14,29 @@ export default function ItemDetailContainer() {
     setLoading(true);
     setError(null);
 
-    fetchProductById(itemId)
-      .then(prod => {
-        setProduct(prod);
+    const fetchProduct = async () => {
+      try {
+        const docRef = doc(db, "products", itemId); 
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setProduct({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          setError("Producto no encontrado");
+        }
+      } catch (err) {
+        setError("Error al obtener el producto");
+        console.error(err);
+      } finally {
         setLoading(false);
-      })
-      .catch(err => {
-        setError(err);
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchProduct();
   }, [itemId]);
 
   if (loading) return <p>Cargando detalle del producto...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p>{error}</p>;
 
   return <ItemDetail product={product} />;
 }

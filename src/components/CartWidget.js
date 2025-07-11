@@ -1,12 +1,15 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import "./Navbar.css"; // O cambiar si usás otro archivo de estilos
+import { useCart } from "../CartContext"; 
+import "./Navbar.css";
 
-export default function CartWidget({ count = 0 }) {
+export default function CartWidget() {
+  const { cartCount } = useCart();
+
   return (
     <div className="cart-widget">
       <FaShoppingCart size={20} />
-      {count > 0 && <span className="cart-count">{count}</span>}
+      {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
     </div>
   );
 }

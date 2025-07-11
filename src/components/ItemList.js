@@ -1,21 +1,17 @@
 import React from "react";
 import Item from "./Item"; 
 
-export default function ItemList({ items }) {
+export default function ItemList({ products = [] }) {
+  if (!products.length) {
+    return <p>Cargando productos...</p>; // o un loader
+  }
+
   return (
-    <div className="catalog-container">
-      {items.length === 0 ? (
-        <p>No hay productos para mostrar</p>
-      ) : (
-        items.map(item => (
-          <Item
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            price={item.price}
-          />
-        ))
-      )}
+    <div className="item-list">
+      {products.map((product) => (
+        <Item key={product.id} {...product} />
+      ))}
     </div>
   );
 }
+

@@ -2,15 +2,18 @@ import products from "./mock/products";
 
 export const fetchProducts = () => {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(products), 500);
+    setTimeout(() => {
+      resolve(products);
+    }, 500);
   });
 };
 
 export const fetchProductById = (id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const found = products.find((p) => p.id === id);
-      found ? resolve(found) : reject("Producto no encontrado");
+      const product = products.find(p => p.id === id);
+      product ? resolve(product) : reject("Producto no encontrado");
     }, 500);
   });
 };
+

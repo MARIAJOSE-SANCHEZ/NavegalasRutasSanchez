@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchProducts } from "../data"; // esto debería devolver todos los productos
 import ItemList from "../components/ItemList";
+import { getDocs, collection, query, where } from "firebase/firestore";
+import db from "../firebase";
+import { useParams } from "react-router-dom";
 
 export default function ItemListContainer() {
-  const { categoryId } = useParams();
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { categoryName } = useParams();
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
+    const fetchProducts = async () => {
+      try {
+        const productsCollection = collection(db, "products");
+        let q;
 
-    fetchProducts()
-      .then((data) => {
-        if (categoryId) {
-          const filtered = data.filter((item) => item.category === categoryId);
-          setItems(filtered);
+        if (categoryName) {
+          q = query(productsCollection, where("category", "==", categoryName));
         } else {
-          setItems(data);
+          q = query(productsCollection);
         }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error al cargar productos:", error);
-        setLoading(false);
-      });
-  }, [categoryId]);
 
-  if (loading) return <p>Cargando productos...</p>;
+        const snapshot = await getDocs(q);
+        const productos = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-  return <ItemList items={items} />;
+        setProducts(productos);
+      } catch (error) {
+        console.error("Error al cargar los productos:", error);
+      }
+    };
+
+    fetchProducts();
+  }, [categoryName]);
+
+  return <ItemList products={products} />;
 }
-

@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
-        <Route path="/category/:categoryId" element={<ItemListContainer />} />
+        <Route path="/category/:categoryName" element={<ItemListContainer />} />
         <Route path="/item/:itemId" element={<ItemDetailContainer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -21,4 +21,3 @@ function App() {
 }
 
 export default App;
-
