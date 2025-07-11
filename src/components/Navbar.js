@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
+import { useCart } from "../context/CartContext";
 import "./Navbar.css";
-import logo from "./logo.png"; // ← Importá tu logo
+import logo from "./logo.png"; 
 
 export default function Navbar() {
+  const { cartCount } = useCart();  // USAR EL CONTEXTO PARA OBTENER EL CONTADOR
+
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-logo">
@@ -15,9 +18,7 @@ export default function Navbar() {
         <Link to="/category/electronica">Electrónica</Link>
         <Link to="/category/ropa">Ropa</Link>
       </div>
-      <CartWidget count={3} />
+      <CartWidget count={cartCount} />
     </nav>
   );
 }
-
-

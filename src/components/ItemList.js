@@ -1,9 +1,11 @@
 import React from "react";
 import Item from "./Item"; 
+import './ItemList.css';
+
 
 export default function ItemList({ products = [] }) {
   if (!products.length) {
-    return <p>Cargando productos...</p>; // o un loader
+    return <p>Cargando productos...</p>; 
   }
 
   return (

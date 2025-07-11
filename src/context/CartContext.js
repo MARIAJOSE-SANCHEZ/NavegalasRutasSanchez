@@ -1,6 +1,8 @@
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext, useState, useMemo, useContext } from "react";
 
-export const CartContext = createContext();
+const CartContext = createContext();
+
+export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
@@ -26,7 +28,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => setCart([]);
 
-  // Calcular la cantidad total de productos en el carrito
+  // Total cantidad de productos
   const cartCount = useMemo(
     () => cart.reduce((total, item) => total + item.quantity, 0),
     [cart]

@@ -1,10 +1,4 @@
 
-.item-detail-container {
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
 .item-detail-info {
   max-width: 500px;
   border: 1px solid #ddd;

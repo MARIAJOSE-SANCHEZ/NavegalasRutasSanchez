@@ -3,7 +3,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #e0f7fa;
   margin: 0;
-  padding: 0;
+  padding-bottom: 4rem;
 }
 
 nav {
@@ -33,11 +33,12 @@ nav a:hover {
 
 .product-card {
   background-color: #ffffff;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
-  width: 250px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.2s ease;
+  text-align: center;
 }
 
 .product-card:hover {
@@ -53,17 +54,10 @@ nav a:hover {
   color: #555555;
 }
 
-.product-link {
-  text-decoration: none;
-  color: #00796b;
-  font-weight: 700;
-}
-
-.product-link:hover {
-  text-decoration: underline;
-}
-
 .item-detail-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
   max-width: 600px;
   margin: 40px auto;
   background-color: #ffffff;
@@ -156,6 +150,20 @@ a:hover {
   padding: 5px 10px;
   font-size: 18px;
 }
+
+.back-to-category-btn {
+  background-color: rgb(103, 233, 103) !important;
+  color: white !important;
+  border-radius: 15px !important;
+  padding: 12px 30px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+}
+
+.back-to-category-btn:hover {
+  background-color: green !important;
+}
+
 
 .add-to-cart-btn {
   margin-top: 20px;
